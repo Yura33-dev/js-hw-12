@@ -39,7 +39,8 @@ form.form {
   outline-color: #4e75ff;
 }
 
-.form button {
+.form button,
+.more {
   border: none;
 
   font-weight: 500;
@@ -54,9 +55,15 @@ form.form {
   transition: background 150ms linear;
 }
 
-.form button:hover {
+.form button:hover,
+.more:hover {
   background: #6c8cff;
   cursor: pointer;
+}
+
+.more {
+  display: block;
+  margin: 32px auto 0 auto;
 }
 
 /* Gallery */
@@ -120,9 +127,13 @@ form.form {
   color: #2e2f42;
 }
 
+.hide {
+  display: none;
+}
+
 .loader {
   display: block;
-  margin: 0 auto;
+  margin: 20px auto;
   width: 48px;
   height: 48px;
   border-radius: 50%;

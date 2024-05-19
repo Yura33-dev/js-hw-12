@@ -6,9 +6,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const gallery = document.querySelector('.gallery');
 const lightbox = new SimpleLightbox('.gallery a');
 
-function renderGallery(images) {
-  gallery.innerHTML = '';
-
+function renderGallery(images, newQuery = true) {
   const content = images
     .map(image => {
       return `
@@ -44,8 +42,23 @@ function renderGallery(images) {
     })
     .join('');
 
+  if (newQuery) {
+    resetGallery();
+  }
   gallery.insertAdjacentHTML('beforeend', content);
   lightbox.refresh();
+}
+
+export function resetGallery() {
+  gallery.innerHTML = '';
+}
+
+export function hideBtnMore() {
+  document.querySelector('.more').classList.add('hide');
+}
+
+export function showBtnMore() {
+  document.querySelector('.more').classList.remove('hide');
 }
 
 export default renderGallery;
