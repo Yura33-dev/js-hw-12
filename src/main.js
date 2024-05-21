@@ -32,6 +32,7 @@ form.addEventListener('submit', async e => {
   container.insertAdjacentHTML('beforeend', loader);
   resetGallery();
   hideBtnMore();
+  page = 1;
 
   try {
     const response = await fetchImages({ searchString: search.value.trim() });
@@ -47,7 +48,10 @@ form.addEventListener('submit', async e => {
       });
     }
   } catch (e) {
-    console.log(e);
+    iziToast.error({
+      title: 'Ooops',
+      message: 'Some error occured. Please, try later',
+    });
   }
 
   form.reset();
@@ -84,11 +88,12 @@ container.addEventListener('click', async e => {
         top: cardHeight * 2,
         behavior: 'smooth',
       });
-    } catch (error) {
-      console.log(error);
+    } catch (e) {
+      iziToast.error({
+        title: 'Ooops',
+        message: 'Some error occured. Please, try later',
+      });
     }
-
-    console.log(totalHits);
 
     if (
       totalHits &&
